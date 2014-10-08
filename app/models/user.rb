@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  devise :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :statuses
   has_many :comments
@@ -22,5 +23,16 @@ class User < ActiveRecord::Base
   :uniqueness => {
     :case_sensitive => false
   }
+  
+  class User < ActiveRecord::Base
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
+end
+
   
 end

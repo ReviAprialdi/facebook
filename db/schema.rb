@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007081526) do
+ActiveRecord::Schema.define(version: 20141008163411) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -21,10 +21,30 @@ ActiveRecord::Schema.define(version: 20141007081526) do
     t.datetime "updated_at"
   end
 
+  create_table "identities", force: true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id"
+
   create_table "statuses", force: true do |t|
     t.integer  "user_id"
     t.text     "status"
     t.datetime "time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_data", force: true do |t|
+    t.integer  "user_id"
+    t.text     "first_name"
+    t.text     "last_name"
+    t.text     "phone"
+    t.text     "address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

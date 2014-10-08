@@ -12,6 +12,8 @@
   <% end -%>
 
   <div><%= f.submit "Log in", :class=>"btn btn-primary" %></div>
+  
+  <div><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>
