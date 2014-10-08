@@ -1,0 +1,25 @@
+<div class="col-md-6 col-md-offset-3 well">
+  <div class="panel panel-default">
+    <div class="panel-body" style="height: 80px">
+      <%=@status.status%>
+    </div>
+  </div>
+  <% comments = @status.comments.all%>
+  <ul class="list-group" id="list_comment">
+    <% comments.each do |c|%>   
+      <%= render 'comments/list_comments', comment: c %>
+    <%end%>
+  </ul>  
+  <%= form_for current_user.comments.new,remote: true do |c|%>
+    <% c.label :comment%>
+    <%= c.hidden_field :status_id, :value=>@status.id%>
+    <%= c.hidden_field :user_id%>
+    <%= c.text_area :comment, :class=>'form-control', :rows=>1, :placeholder=>"write comment here...", :id=>"comment_area"%>
+    <div class="row" style="margin-top: 10px">
+      <div class="col-md-5 col-md-offset-7 ">
+        <%= c.submit 'Comment', :class=>"btn btn-primary", :style=>"float:right; margin-left:10px"%>
+        <%= link_to 'Back', :back, :class=>"btn btn-primary", :style=>"float:right"%>
+      </div>
+    </div>
+  <%end%>
+</div>

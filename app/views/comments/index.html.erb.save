@@ -1,0 +1,19 @@
+<table border=1, width = 800px>
+  <tr>
+    <td colspan=2, width = 50%>Time Line</td>
+  </tr>
+  <tr>
+    <td>
+      <%=form_for :comment do |c| %>
+	<%=c.label :comment, "What's your think ?"%></br>
+	<%=c.text_area :comment %></br>
+	<%=c.submit%>
+      <%end%>
+    </td>
+    <td>
+      <%@comments.each do |c|%>
+        <%=c.comment%><%=link_to c.user.email 	, comment_path(c.id)%></br>
+      <%end%>
+    </td>
+  </tr>
+</table>

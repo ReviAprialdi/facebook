@@ -1,0 +1,19 @@
+<div class="col-md-12 well">
+    <div class="panel panel-default">
+      <div class="panel-body" style="height: 80px">
+        <%=status.status%>  
+      </div>
+    </div>
+    <%=link_to pluralize(status.comments.size,'comment'), status_path(status.id), :id=>"comment_link_#{status.id}" %>
+    <%= form_for current_user.comments.new, remote: true do |c|%>
+      <% c.label :comment%>
+      <%= c.hidden_field :status_id, :value=>status.id%>
+      <%= c.hidden_field :user_id%>
+      <%= c.text_area :comment, :class=>'form-control', :rows=>1, :placeholder=>"write comment here...", :id=>"form_comment"%>
+      <div class="row" style="margin-top: 10px">
+        <div class="col-md-3 col-md-offset-9 ">
+          <%= c.submit 'Comment', :class=>"btn btn-primary", :style=>"float:right"%>
+        </div>
+      </div>
+    <%end%>
+</div>

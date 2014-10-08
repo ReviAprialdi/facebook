@@ -1,0 +1,16 @@
+<div class="col-md-3 "style="position: fixed" >
+    <div class="page-header">
+      <h3>Whats your think?</h3>
+    </div>
+    <div class="col-md-12 well">
+      <%=form_for st, remote: true do |status| %>
+        <%status.label :status%>
+        <%=status.text_area :status, :class=>"form-control", :rows=>3, :placeholder=>"write status here...", :id=>"form_status"%>
+          <div class="row" style="margin-top: 10px">
+            <div class="col-md-3 col-md-offset-9 ">
+              <%= status.submit 'Update', :class=>"btn btn-primary", :style=>"float:right"%>
+            </div>
+          </div>
+      <%end%>
+    </div>
+  </div>

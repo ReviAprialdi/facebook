@@ -1,0 +1,31 @@
+<div class="container" style="padding-top: 70px">
+  
+  <div class="row">
+    <div class="col-md-3"; style="background:beige; position: fixed">
+      <%=form_for :comment do |c| %>
+	<%=c.label :comment, "What's your think ?"%></br>
+	<%=c.text_area :comment %></br>
+	<%=c.submit%>
+      <%end%>
+    </div>
+    <div class="col-md-6 col-md-offset-4 ">
+      <div class="row">
+	<%@comments.each do |c|%>
+	  <div class="col-md-12 well">
+	    <%=c.comment%>
+	    <div class="col-md-1 col-md-offset-11">
+	      <% if current_user.id == c.user_id%>
+		<%=link_to 'edit', edit_comment_path(c)%>
+	      <%end%>
+	    </div>
+	  </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+
+
