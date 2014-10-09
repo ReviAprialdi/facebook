@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :statuses
   has_many :comments
+  has_one :user_data
   
   attr_accessor :login
   

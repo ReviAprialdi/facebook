@@ -30,6 +30,11 @@
 	    <span class="caret"></span>
 	  <%end%>
 	  <ul class="dropdown-menu" role="menu">
+            <%if current_user.user_data%>
+              <li><span class="glyphicon glyphicon-wrench"><%=link_to('   Edit user data',edit_user_datas_path)%></span></li>
+            <%else%>
+              <li><span class="glyphicon glyphicon-wrench"><%=link_to('   Add user data',user_datas_path, :method=> :post)%></span></li>
+            <%end%>
 	    <li><span class="glyphicon glyphicon-log-out", style="margin-left:5px"><%=link_to('   Logout', destroy_user_session_path, :method => :delete)%></span></li>
 	  </ul>
 	</li>
