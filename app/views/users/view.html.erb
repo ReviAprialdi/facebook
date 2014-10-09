@@ -1,8 +1,6 @@
 <div class="row">
-  
   <%= render 'statuses/form_status', st: Status.new%> 
-  
-<div class="col-md-8" style="float: right" id="status_show">
+  <div class="col-md-8" style="float: right" id="status_show">
     <%@statuses.each do |status|%>
       <%= render'statuses/form_status_show',status: status%>
     <%end%>

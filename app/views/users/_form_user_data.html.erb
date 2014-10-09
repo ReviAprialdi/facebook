@@ -1,0 +1,16 @@
+<div class="col-md-6">
+
+  <%=form.label :first_name%>
+  <%=form.text_field :first_name, :class=>"form-control input-sm"%><br />
+  <%=form.label :last_name%>
+  <%=form.text_field :last_name, :class=>"form-control input-sm"%><br />
+  <%=form.label :contrycode%>
+  <%=form.select :contrycode, @codes.collect{|c| [ "#{c.name} (#{c.calling})", c.calling]},{},  class:"form-control"%><br />
+  <%=form.label :phone_number%>
+  <%=form.text_field :phone_number, :class=>"form-control input-sm", :maxlength=>12%><br />
+</div>
+<div class="col-md-6">
+  <%=image_tag current_user.avatar.url(:medium)%>
+  <%= form.file_field :avatar %>
+  <%= form.submit 'Save', :class=>"btn btn-primary", :style=>"float:left"%>
+</div>

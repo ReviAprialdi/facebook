@@ -1,1 +1,15 @@
-<li class="list-group-item" style="text-align: right"><%=comment.comment%></li>
+<li class="list-group-item" >
+  <div class="row">
+    <div class="col-md-1">
+      <%=image_tag comment.user.avatar.url(:thumb)%>
+    </div>
+    <div class="col-md-10">
+      <%=comment.user.user_name%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+    <%=comment.comment%>  
+    </div>
+  </div>
+</li>

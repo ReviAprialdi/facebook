@@ -4,8 +4,11 @@ Rails.application.routes.draw do
   resources :comments
   resources :user_datas
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
   
+  get '/profil/edit'=>'users#edit', as: :edit_profil
   get '/profil'=> 'users#view', as: :profil
+  patch '/profil'=>'users#update', as: :update_profil
   
  
   

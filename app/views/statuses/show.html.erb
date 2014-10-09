@@ -1,7 +1,15 @@
 <div class="col-md-6 col-md-offset-3 well">
   <div class="panel panel-default">
-    <div class="panel-body" style="height: 80px">
-      <%=@status.status%>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-1"><%=image_tag @status.user.avatar.url(:thumb)%></div>
+        <div class="col-md-11"><h4><%=link_to "#{@status.user.first_name} #{@status.user.last_name}", profil_path %></h4></div>  
+      </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h4><%=@status.status%></h4>
+          </div>
+        </div>
     </div>
   </div>
   <% comments = @status.comments.all%>

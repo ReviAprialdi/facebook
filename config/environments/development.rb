@@ -51,4 +51,6 @@ Rails.application.configure do
     authentication: :plain,
     domain: 'somedomain.com'
   }
+  #paperClip
+  Paperclip.options[:command_path]="/usr/bin/"
 end

@@ -2,12 +2,23 @@ class UsersController < ApplicationController
   def view
    @statuses = current_user.statuses
   end
-  def self.from_omniauth(auth)
-  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-    user.email = auth.info.email
-    user.password = Devise.friendly_token[0,20]
-    user.name = auth.info.name   # assuming the user model has a name
-    user.image = auth.info.image # assuming the user model has an image
+
+  def edit
+    @codes = IsoCountryCodes.all
+    
   end
-end
+  
+  def update
+    if current_user.update_attributes(params.require(:user).permit(:first_name, :last_name, :contrycode, :phone_number, :avatar))
+    redirect_to statuses_path
+    else
+      Rails.logger.info(current_user.errors.messages.inspect)
+      redirect_to edit_profil_path
+    end 
+  end
+  
+  private
+  def user_params
+    
+  end
 end

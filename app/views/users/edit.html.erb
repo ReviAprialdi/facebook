@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>EDIT YOUR DATA</h1>
+    <%= form_for current_user, url: update_profil_path, :html => { :multipart => true } do |form| %>
+      <%= render 'form_user_data', form: form%>
+     <%end%>
+  </div>
+</div>

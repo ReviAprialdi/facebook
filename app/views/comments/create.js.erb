@@ -1,4 +1,4 @@
 $( "#comment_link_<%=@comment.status_id%>" ).html("<%= pluralize(@comment.status.comments.size,'comment')%>");
-$("#form_comment").val('');
+$("#form_comment_<%=@comment.status_id%>").val('');
 $("#list_comment").append("<%= escape_javascript(render('list_comments', comment: @comment)) %>");
 $("#comment_area").val('');
