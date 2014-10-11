@@ -47,3 +47,9 @@ gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
 gem 'paperclip', '~>4.2'
 gem 'iso_country_codes'
+gem 'capybara'
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'simplecov', require: false
+end

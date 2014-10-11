@@ -1,5 +1,5 @@
 class StatusesController < ApplicationController
-  before_action :authenticate_user!
+  
   def index
     @statuses = Status.all.order("statuses.created_at desc")
   end

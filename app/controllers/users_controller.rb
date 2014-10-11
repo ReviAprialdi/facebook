@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
+
   def view
    @statuses = current_user.statuses
   end
 
   def edit
     @codes = IsoCountryCodes.all
-    
   end
   
   def update
@@ -15,10 +15,5 @@ class UsersController < ApplicationController
       Rails.logger.info(current_user.errors.messages.inspect)
       redirect_to edit_profil_path
     end 
-  end
-  
-  private
-  def user_params
-    
   end
 end
